@@ -1,6 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
+from .models import Tour
 
 
 def index(req):
-    return HttpResponse("Hi!")
+    tours = Tour.objects.all()
+    data = {'tours': tours}
+    return render(req, 'index.html', data)
